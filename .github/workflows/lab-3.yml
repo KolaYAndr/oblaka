@@ -30,6 +30,6 @@ jobs:
     - name: build-push-docker
       uses: docker/build-push-action@v5
       with:
-        context: ./lab-3/Base/
+        context: ./lab3
         push: true
         tags: KolaYAndr/oblaka:latest
