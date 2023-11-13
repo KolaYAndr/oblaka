@@ -14,7 +14,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: "/lab-3"
+        working-directory: "/lab3"
 
     steps:
     - name: repository checkout
