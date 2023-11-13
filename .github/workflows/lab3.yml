@@ -32,4 +32,4 @@ jobs:
       with:
         context: ./lab3
         push: true
-        tags: KolaYAndr/oblaka:latest
+        tags: kolayandr/oblaka:latest
