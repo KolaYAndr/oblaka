@@ -1,5 +1,5 @@
-FROM node:13-alpine
-
+FROM node:20-alpine
+WORKDIR /app
 MAINTAINER pashtet
 
 ENV MONGO_DB_USERNAME=admin \ 
