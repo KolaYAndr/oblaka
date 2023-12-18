@@ -1,0 +1,9 @@
+# Отчет
+
+## Установка kubernetes
+1) Был установлен kubectl
+2) Был установлен minikube (+ Docker)
+
+## Запуск minikube
+Сначала была выполнена команда minikube start
+
