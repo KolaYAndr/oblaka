@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      components: cloud-lab2
+  template:
+    metadata:
+      labels:
+        components: cloud-lab2
+    spec:
+      containers:
+        - name: nginx-server
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: NodePort
+  ports:
+    - port: 3000
+      targetPort: 80
+      nodePort: 31200
+  selector:
+    components: lab2
