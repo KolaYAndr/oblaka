@@ -52,7 +52,7 @@ spec:
       targetPort: 80
       nodePort: 31200
   selector:
-    components: lab2
+    components: cloud-lab2
 ```
 
 Запуск файла конфигурации `kubectl apply -f file.yml`
