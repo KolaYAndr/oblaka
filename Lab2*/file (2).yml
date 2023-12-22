@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      components: cloud-lab2-star
+  template:
+    metadata:
+      labels:
+        components: cloud-lab2-star
+    spec:
+      containers:
+        - name: nginx-server
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3000
+      protocol: TCP
+  selector:
+    components: cloud-lab2-star
+    
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/add-base-url: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - choma-host
+      secretName: choma-lab2-tls
+  rules:
+  - host: choma-host
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: my-service
+            port: 
+              number: 3000
