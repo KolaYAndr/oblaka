@@ -10,11 +10,11 @@
 
 `minikube addons enable ingress`
 
-КАРТНКА 1
+![Акивация ingress](https://github.com/KolaYAndr/oblaka/blob/main/Lab2*/Images/Image%201.png)
 
 А в раздел DNS-записей был добавлен наш адрес
 
-КАРТНКА 2
+![Добавление записи в DNS](https://github.com/KolaYAndr/oblaka/blob/main/Lab2*/Images/Image%202.png)
 
 ### Самоподписанный сертификат
 На данном этапе нужно было создать самоподписанный сертификат.
@@ -23,9 +23,9 @@
 
 `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt`
 
-КАРТИНКА 3
+![Создание сертификата](https://github.com/KolaYAndr/oblaka/blob/main/Lab2*/Images/Image%203.png)
 
-КАРТИНКА 4
+![Сертификат в директории](https://github.com/KolaYAndr/oblaka/blob/main/Lab2*/Images/Image%204.png)
 
 ### Ingress.yml
 После файл file.yml (из предыдущей работы) был дополнен информацией об ingress
@@ -60,13 +60,15 @@ spec:
 
 И проверяем, что все сервисы, поды и ingress запущены
 
-КАРТИНКА 
+![Проверка](https://github.com/KolaYAndr/oblaka/blob/main/Lab2*/Images/Image%205.png) 
 ### Результат
 Переходим в браузепе по адресу `https://choma-host`
 
 И видим, что браузер обнаружил самоподписанный сертификат
 
-ДВЕ КАРТИНКИ
+![Обнаружение сертификата](https://github.com/KolaYAndr/oblaka/blob/main/Lab2*/Images/Image%206.png)
+
+![Открытый сертификат](https://github.com/KolaYAndr/oblaka/blob/main/Lab2*/Images/Image%207.png)
 
 ## Вывод
 В результате выполнения работы был изучен набор правил ingress и изучен способ самостоятельного подписания сертификатов
