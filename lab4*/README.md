@@ -23,3 +23,42 @@ clone https://github.com/devopscube/kube-state-metrics-configs.git - Stats
 Для телеги всё готово
 
 ### Изменяем файлы AlertManager'а
+Для работы нужно изменить configmap у AlertManager'а. Вот так он выглядит в моём случае:
+```
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: alertmanager-config
+  namespace: monitoring
+data:
+  config.yml: |-
+    global:
+    templates:
+    - '/etc/alertmanager/*.tmpl'
+    route:
+      receiver: telegram
+      group_by: ['alertname', 'priority']
+      group_wait: 10s
+      repeat_interval: 30m
+      routes:
+        - receiver: telegram
+          match:
+            severity: 'critical'
+          group_wait: 10s
+          repeat_interval: 1m
+
+    receivers:
+    - name: telegram
+      telegram_configs:
+      - api_url: https://api.telegram.org
+        bot_token: 6871802424:AAEtm-9YL0lw9OE65mTyKq6PZoXBDzML7Pk
+        chat_id: -1001980980628
+        disable_notifications: false
+        http_config:
+          follow_redirects: true
+        send_resolved: true
+        parse_mode: 'HTML'
+```
+
+Далее можно перейти по адресу localhost:9090 и увидеть появившееся правило
+<img src='./photos/alertmanager.jpg' width='520px'/>
