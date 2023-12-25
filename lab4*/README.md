@@ -60,5 +60,17 @@ data:
         parse_mode: 'HTML'
 ```
 
+Теперь исполним команду
+
+> kubectl port-forward -n monitoring alertmanager-74d5f85dfd-l9nhx 9090:9093
+
 Далее можно перейти по адресу localhost:9090 и увидеть появившееся правило
+
 <img src='./photos/alertmanager.png' width='1040px'/>
+
+В интерфейсе прометея можно увидеть исполняющееся правило
+
+<img src='./photos/firing.png' width='1040px'/>
+
+## Вывод
+Был успешно настроен AlertManager с отправкой сообщений в телеграм
