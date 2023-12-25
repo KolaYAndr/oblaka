@@ -61,4 +61,4 @@ data:
 ```
 
 Далее можно перейти по адресу localhost:9090 и увидеть появившееся правило
-<img src='./photos/alertmanager.jpg' width='520px'/>
+<img src='./photos/alertmanager.png' width='520px'/>
