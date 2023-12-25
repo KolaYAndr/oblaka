@@ -8,19 +8,24 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+
+app.get('/', (req, res) => {
+    res.send('Server is running');
+  });
+  
 app.post('/writeToDatabase', async (req, res) => {
   try {
     const dataToWrite = req.body.data;
 
-    // Подключение к базе данных
+    
     const client = new MongoClient('mongodb://mongo:27017', { useNewUrlParser: true, useUnifiedTopology: true });
     await client.connect();
 
-    // Запись данных в базу данных
+    
     const db = client.db('mydatabase');
     await db.collection('mycollection').insertOne({ data: dataToWrite });
 
-    // Закрытие соединения с базой данных
+    
     await client.close();
 
     res.send('Data successfully written to the database');
